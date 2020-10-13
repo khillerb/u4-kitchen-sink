@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-
+const Schema = mongoose.Schema;
 
 
 
 eventSchema = new Schema({
-    start: {type:Date, default: Date.now},
-    end: {type:Date, default: Date.now},
+    start: {type:Date},
+    end: {type:Date},
     title: {type:String}
 })
 

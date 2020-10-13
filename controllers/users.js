@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Calendar = require('../models/calendar')
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
@@ -7,9 +8,17 @@ module.exports = {
   login
 };
 
+
+
 async function signup(req, res) {
   const user = new User(req.body);
+  const usercalendar = new Calendar({events: []})
   try {
+    usercalendar.save()
+    User.findByIdAndUpdate({_id: user._id}, {calendar: usercalendar._id}, (err,res) => {
+      if (err) console.log('Error: ', err, 'Response: ', res )
+    })
+    console.log(user.calendar._id)
     await user.save();
     // Send back a JWT instead of the user
     const token = createJWT(user);
