@@ -5,7 +5,11 @@ const eventsCtrl = require('../../controllers/events');
 /*---------- Protected Routes ----------*/
 router.use(require('../../config/auth'));
 
-router.post('/',eventsCtrl.create)
+router.get('/', eventsCtrl.index)
+router.post('/', eventsCtrl.create)
+router.put('/:id')
+router.delete('/:id', eventsCtrl.delete)
+
 
 module.exports = router
 

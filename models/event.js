@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 
 eventSchema = new Schema({
-    calendar: {type: Schema.Types.ObjectId, ref: 'Calendar'},
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
     start: {type:Date},
     end: {type:Date},
     title: {type:String},

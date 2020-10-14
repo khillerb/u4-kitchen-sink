@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
+
 
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import userService from './utils/userService';
 import NavBar from './components/NavBar/NavBar';
 
-import "react-big-calendar/lib/css/react-big-calendar.css";
+
 class App extends Component {
   constructor() {
     super();
@@ -50,6 +49,11 @@ class App extends Component {
             <LoginPage
               history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
+            />
+          }/>
+          <Route exact path='/calendar' render={({history}) => 
+            <LoginPage
+              history={history}
             />
           }/>
         </Switch>

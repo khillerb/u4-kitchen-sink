@@ -1,4 +1,5 @@
 const User = require('../models/user');
+
 const Calendar = require('../models/calendar')
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
@@ -8,20 +9,22 @@ const SECRET = process.env.SECRET;
 module.exports = {
   signup,
   login,
-  delete: deleteIngredient,
-  create: createIngredient,
+  deleteIngredient,
+  createIngredient,
   indexIngredient,
-  userIndex
+  userIndex,
+  deleteUser
 };
 
 
 
 async function signup(req, res) {
-  const user = new User(req.body);
+  let user = new User(req.body);
   const usercalendar = new Calendar({events: []})
   try {
     usercalendar.save()
-    user = await user.save();
+    console.log(usercalendar)
+    user.save();
     User.findByIdAndUpdate({_id: user._id}, {calendar: usercalendar._id}, (err,res) => {
       if (err) console.log('Error: ', err, 'Response: ', res )
     })
@@ -68,8 +71,9 @@ async function createIngredient(req,res){
   const user = await User.findByIdAndUpdate(req.user._id, {$push: { ingredientList: req.body}})
   res.status(200).json(user.ingredientList)
 }
-function deleteIngredient(req,res){
-  User.findByIdAndUpdate(req.user._id, {$pull: { ingredientList: req.body}})
+async function deleteIngredient(req,res){
+  const user = User.findByIdAndUpdate(req.user._id, {$pull: { ingredientList: req.body}})
+  res.status(200).json(user.ingredientList)
 }
 async function indexIngredient(req,res) {
   const user = await User.findById(req.user._id)
@@ -77,4 +81,11 @@ async function indexIngredient(req,res) {
 }
 async function userIndex (req,res) {
   const user = await User.findById(req.user._id)
+  res.status(200).json(user)
+}
+
+async function deleteUser (req,res) {
+  const deletedUser = User.findByIdAndRemove(req.user._id)
+  res.status(200).json(deletedUser)
+  localStorage.removeItem('token');
 }
