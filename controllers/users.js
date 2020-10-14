@@ -3,9 +3,15 @@ const Calendar = require('../models/calendar')
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
+
+
 module.exports = {
   signup,
-  login
+  login,
+  delete: deleteIngredient,
+  create: createIngredient,
+  indexIngredient,
+  userIndex
 };
 
 
@@ -15,16 +21,17 @@ async function signup(req, res) {
   const usercalendar = new Calendar({events: []})
   try {
     usercalendar.save()
+    user = await user.save();
     User.findByIdAndUpdate({_id: user._id}, {calendar: usercalendar._id}, (err,res) => {
       if (err) console.log('Error: ', err, 'Response: ', res )
     })
-    console.log(user.calendar._id)
-    await user.save();
+    console.log(req)
     // Send back a JWT instead of the user
     const token = createJWT(user);
     res.json({token});
   } catch (err) {
     // Probably a duplicate email
+    console.log(err)
     res.status(400).json(err);
   }
 }
@@ -54,4 +61,20 @@ function createJWT(user) {
     SECRET,
     {expiresIn: '24h'}
   );
+}
+
+
+async function createIngredient(req,res){
+  const user = await User.findByIdAndUpdate(req.user._id, {$push: { ingredientList: req.body}})
+  res.status(200).json(user.ingredientList)
+}
+function deleteIngredient(req,res){
+  User.findByIdAndUpdate(req.user._id, {$pull: { ingredientList: req.body}})
+}
+async function indexIngredient(req,res) {
+  const user = await User.findById(req.user._id)
+  res.status(200).json(user.ingredientList)
+}
+async function userIndex (req,res) {
+  const user = await User.findById(req.user._id)
 }

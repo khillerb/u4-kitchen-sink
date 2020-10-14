@@ -8,7 +8,8 @@ class SignupForm extends Component {
     name: '',
     email: '',
     password: '',
-    passwordConf: ''
+    passwordConf: '',
+    calendar: null,
   };
 
   handleChange = (e) => {
