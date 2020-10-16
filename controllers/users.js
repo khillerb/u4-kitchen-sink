@@ -13,7 +13,8 @@ module.exports = {
   createIngredient,
   indexIngredient,
   userIndex,
-  deleteUser
+  deleteUser,
+  updateUser
 };
 
 
@@ -85,7 +86,23 @@ async function userIndex (req,res) {
 }
 
 async function deleteUser (req,res) {
-  const deletedUser = User.findByIdAndRemove(req.user._id)
+  const deletedUser = await User.findByIdAndRemove(req.user._id)
   res.status(200).json(deletedUser)
   localStorage.removeItem('token');
+}
+function updateUser (req,res) {
+  user.comparePassword(req.body.oldpass, (err, isMatch) => {
+    if (isMatch) {
+      if (req.body.newpass !== req.body.confirmpass) res.status(401).json({err: 'Passwords do not match!'});
+      const updatedUser = User.findByIdAndUpdate(req.user.id,{
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.newpass
+      })
+    } else {
+      return res.status(401).json({err: 'bad credentials'});
+    }
+  });
+ 
+  
 }

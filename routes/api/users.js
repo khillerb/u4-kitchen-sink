@@ -12,6 +12,7 @@ router.use(require('../../config/auth'));
 router.post('/ingredients', usersCtrl.createIngredient)
 router.delete('/ingredients', usersCtrl.deleteIngredient)
 router.delete('/:id', usersCtrl.deleteUser)
+router.put('/:id', usersCtrl.updateUser)
 router.get('/ingredients', usersCtrl.indexIngredient)
 router.get('/', usersCtrl.userIndex)
 

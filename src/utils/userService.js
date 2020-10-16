@@ -5,10 +5,27 @@ export default {
     signup,
     getUser,
     logout,
-    login
+    login,
+    delete: deleteUser,
+    update: updateUser
   };
 
-
+function deleteUser(user) {
+  const options = {
+    method: 'DELETE',
+    headers: new Headers({'Content-Type': 'application/json'}),
+    body: JSON.stringify(user)
+  }
+  return fetch(BASE_URL,options).then(res=>res.json)
+}
+function updateUser(body) {
+  const options = {
+    method: 'PUT',
+    headers: new Headers({'Content-Type': 'application/json'}),
+    body: JSON.stringify(body)
+  }
+  return fetch(BASE_URL,options).then(res=>res.json)
+}
 function signup(user) {
   console.log(user)
     return fetch(BASE_URL + 'signup', {

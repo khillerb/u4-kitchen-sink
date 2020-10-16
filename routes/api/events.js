@@ -7,7 +7,7 @@ router.use(require('../../config/auth'));
 
 router.get('/', eventsCtrl.index)
 router.post('/', eventsCtrl.create)
-router.put('/:id')
+router.put('/:id', eventsCtrl.update)
 router.delete('/:id', eventsCtrl.delete)
 
 

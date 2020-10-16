@@ -25,20 +25,33 @@ const deleteEvent = (eventId) => {
     }
     return fetch(BASE_URL + eventId, options).then(res => res.json());
 }
-const createEvent = (bodyText) => {
+const createEvent = (body) => {
     const options = {
         method: 'POST',
         headers: new Headers({
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer ' + tokenService.getToken()
         }),
-        body: bodyText
+        body: JSON.stringify(body)
     }
     return fetch(BASE_URL, options).then(res => res.json());
+}
+const updateEvent = (body) => {
+    const options = {
+        method: 'PUT',
+        headers: new Headers({
+            'Content-Type': 'application/json', 
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }),
+        body: JSON.stringify(body)
+    }
+    return fetch(BASE_URL + body.id, options).then(res => res.json());
 }
 
 export default {
     getAllEvents,
-    deleteEvent
+    deleteEvent,
+    createEvent,
+    updateEvent
 }    
 

@@ -1,3 +1,9 @@
 .card{
     width:18rem;
 }
+.bg-svg{
+    background-image: url('./cardbackground.svg');
+}
+.bg-cleanup{
+    background-color: white;
+}
