@@ -8,7 +8,7 @@ eventSchema = new Schema({
     start: {type:Date},
     end: {type:Date},
     title: {type:String},
-    query: {type:String}
+    description: {type:String}
 })
 
 

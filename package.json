@@ -7,10 +7,12 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bcrypt": "^5.0.0",
+    "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
+    "moment-timezone": "^0.5.31",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0",
     "react": "^16.13.1",
@@ -41,5 +43,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "secure": false
 }

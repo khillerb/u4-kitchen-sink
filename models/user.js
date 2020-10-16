@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
   calendar: {type: mongoose.Schema.Types.ObjectId, ref: 'Calendar'},
-  ingredientList: [{type: String}]
+  loc: {type: String}
 }, {
   timestamps: true
 });

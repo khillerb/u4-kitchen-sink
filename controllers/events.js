@@ -9,7 +9,7 @@ module.exports = {
 }
 async function createEvent (req,res){
     console.log(req.body, moment(req.body.start),req.user)
-    const event = await new Event({user: req.user._id, start: moment(req.body.start), end: moment(req.body.end), title: req.body.title, query: req.body.query});
+    const event = await new Event({user: req.user._id, start: moment(req.body.start), end: moment(req.body.end), title: req.body.title, description: req.body.description});
     event.save()
     res.status(201).json(event);
 }

@@ -9,7 +9,7 @@ class SignupForm extends Component {
     email: '',
     password: '',
     passwordConf: '',
-    calendar: null,
+    loc: '',
   };
 
   handleChange = (e) => {
@@ -60,6 +60,11 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <input type="password" className="form-control" placeholder="Confirm Password" value={this.state.passwordConf} name="passwordConf" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" placeholder="Add Any Major City Near You" value={this.state.loc} name="loc" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
