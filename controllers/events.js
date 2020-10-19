@@ -24,11 +24,12 @@ async function eventIndex (req,res) {
     res.status(200).json(events);
 }
 async function updateEvent(req,res)  {
-    const event = await Event.findByIdAndUpdate(req.params._id,{
-        start: req.params.start,
-        end: req.params.end,
-        title: req.params.title,
-        description: req.params.description
+    console.log(req.body)
+    const event = await Event.findByIdAndUpdate(req.body._id,{
+        start: req.body.start,
+        end: req.body.end,
+        title: req.body.title,
+        description: req.body.description
     },err => {console.log(err)})
     res.status(300).json(event)
 }

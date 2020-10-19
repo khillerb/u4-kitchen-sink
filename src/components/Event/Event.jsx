@@ -5,7 +5,8 @@ const Event = (props) => {
     const [viewMode, setViewMode] = useState(true);
     const [change, setChange] = useState({})
     const [formData,setFormData] = useState({})
-    const handleSubmit = () => {
+    const handleSubmit = (evt) => {
+        evt.preventDefault()
         console.log(formData)
         calendarService.updateEvent(formData).then(res => setChange(!change))
     }
@@ -25,7 +26,7 @@ const Event = (props) => {
         ) : (
             <div className="card border-info bg-svg">
                 <div className="card-body">
-                <form onSubmit={()=> handleSubmit}>
+                <form onSubmit={(evt)=> handleSubmit(evt)}>
                     <div className="form-group row">
                         <label htmlFor="text" className="col-4 col-form-label"></label> 
                         <div className="col-8">
@@ -44,7 +45,7 @@ const Event = (props) => {
                             <div className="input-group-prepend">
                             <div className="input-group-text">Start</div>
                             </div> 
-                            <input id="text1" name="start" type="datetime" onChange={ evt => setFormData({...formData, ...{start: evt.target.value}})} className="form-control"></input>     
+                            <input id="text1" name="start" type="datetime-local" onChange={ evt => setFormData({...formData, ...{start: evt.target.value}})} className="form-control"></input>     
                         </div>
                         </div>
                     </div>
@@ -55,7 +56,7 @@ const Event = (props) => {
                             <div className="input-group-prepend">
                             <div className="input-group-text">End</div>
                             </div> 
-                            <input id="text2" name="end" type="datetime" onChange={ evt => setFormData({...formData, ...{end: evt.target.value}})} className="form-control"></input>
+                            <input id="text2" name="end" type="datetime-local" onChange={ evt => setFormData({...formData, ...{end: evt.target.value}})} className="form-control"></input>
                         </div>
                         </div>
                     </div>
@@ -72,7 +73,7 @@ const Event = (props) => {
                     </div> 
                     <div className="form-group row">
                         <div className="offset-4 col-8">
-                        <button name="submit" type="submit" className="btn btn-primary" onClick={()=>{setViewMode(true)}}>Submit</button>
+                        <button name="submit" type="submit" className="btn btn-primary" >Submit</button>
                         </div>
                     </div>
                 </form>
