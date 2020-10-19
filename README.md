@@ -8,15 +8,15 @@ The calendar catalogs a list of events and shows them on a calendar component. E
 ![Something](/images/calendar.png)
 
 #### Technologies Used
-MongoDB
-Mongoose
-Express
-Node
-React
-Bootstrap
-JS
-JSX/ HTML
-CSS
+- MongoDB
+- Mongoose
+- Express
+- Node
+- React
+- Bootstrap
+- JS
+- JSX/ HTML
+- CSS
 
 
 ### Heroku Deployment
