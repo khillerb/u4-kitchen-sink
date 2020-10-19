@@ -5,7 +5,7 @@ A simple scheduling app
 The calendar catalogs a list of events and shows them on a calendar component. Each user has their own calendar with private events.
 
 #### Pictures
-![Something](/images/homepageftf.png)
+![Something](/images/calendar.png)
 
 #### Technologies Used
 Python
