@@ -17,6 +17,7 @@ The calendar catalogs a list of events and shows them on a calendar component. E
 - JS
 - JSX/ HTML
 - CSS
+- JWT Auth
 
 
 ### Heroku Deployment
