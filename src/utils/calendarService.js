@@ -37,6 +37,7 @@ const createEvent = (body) => {
     return fetch(BASE_URL, options).then(res => res.json());
 }
 const updateEvent = (body) => {
+    console.log(body)
     const options = {
         method: 'PUT',
         headers: new Headers({
@@ -45,7 +46,7 @@ const updateEvent = (body) => {
         }),
         body: JSON.stringify(body)
     }
-    return fetch(BASE_URL + body.id, options).then(res => res.json());
+    return fetch(BASE_URL + body._id, options).then(res => res.json());
 }
 
 export default {

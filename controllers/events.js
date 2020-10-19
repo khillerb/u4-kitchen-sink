@@ -20,15 +20,16 @@ async function deleteEvent (req,res){
 }
 async function eventIndex (req,res) {
     const events = await Event.find({user: req.user._id});
+    console.log(events)
     res.status(200).json(events);
 }
 async function updateEvent(req,res)  {
-    const event = await Event.findByIdAndUpdate(req.body.id,{
-        start: req.body.start,
-        end: req.body.end,
-        title: req.body.title,
-        description: req.body.description
-    })
+    const event = await Event.findByIdAndUpdate(req.params._id,{
+        start: req.params.start,
+        end: req.params.end,
+        title: req.params.title,
+        description: req.params.description
+    },err => {console.log(err)})
     res.status(300).json(event)
 }
 
