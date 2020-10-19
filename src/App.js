@@ -38,7 +38,10 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/' render={() =>
-           <div>Hello World!</div> 
+          <div>
+           <h2>Hello! Welcome to Simple Calendar</h2>
+           Please Log in or Sign up to get started!
+           </div> 
           }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
