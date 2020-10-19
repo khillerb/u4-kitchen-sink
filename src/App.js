@@ -38,6 +38,12 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/' render={() =>
+          this.state.user ?
+          <div>
+          <h2>Hello! Welcome to Simple Calendar</h2>
+          Click My Events to get started!
+          </div> 
+          :
           <div>
            <h2>Hello! Welcome to Simple Calendar</h2>
            Please Log in or Sign up to get started!

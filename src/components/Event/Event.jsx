@@ -24,6 +24,7 @@ const Event = (props) => {
             </div> 
         ) : (
             <div className="card border-info bg-svg">
+                <div className="card-body">
                 <form onSubmit={()=> handleSubmit}>
                     <div className="form-group row">
                         <label htmlFor="text" className="col-4 col-form-label"></label> 
@@ -75,6 +76,7 @@ const Event = (props) => {
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
         )
     )

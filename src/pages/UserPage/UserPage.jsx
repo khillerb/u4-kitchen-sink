@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import tokenService from '../../utils/tokenService'
+import tokenService from '../../utils/tokenService';
+
 
 
 const UserPage = (props) => {
